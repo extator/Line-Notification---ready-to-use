@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>ลงทะเบียนเข้าใช้งาน</title>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+
+    <!-- Import Google Icon Font -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+    <!-- Import Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
+    <!-- Set Style -->
+    <style>
+        body,
+        select,
+        button,
+        input {
+            font-family: "Kanit", sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Start Container -->
+    <div class="container">
+        <!-- Start Header Content -->
+        <div class="row">
+            <div class="col s12 center-align">
+                <h5>กรอกรหัส</h5>
+            </div>
+        </div>
+        <!-- End Header Content -->
+
+        <!-- Start Form Content -->
+        <div class="row">
+            <form id="carForm" class="col s12" autocomplete="off">
+                <!-- Start Select Car Years -->
+                <label>
+                    <h6>ปีจดทะเบียนรถยนต์</h6>
+                </label>
+                <select id="carYear" class="browser-default" required class="validate">
+                    <option value="" disabled selected>กรุณาเลือกปีจดทะเบียน</option>
+                    <option value="1">2019</option>
+                    <option value="2">2018</option>
+                    <option value="3">2017</option>
+                    <option value="4">2016</option>
+                    <option value="5">2015</option>
+                    <option value="6">2014</option>
+                    <option value="7">2013</option>
+                    <option value="8">2012</option>
+                    <option value="9">2011</option>
+                    <option value="10">2010</option>
+                </select>
+                <!-- End Select Car Years -->
+
+                <!-- Start Car Price Input -->
+                <div class="input-field">
+                    <label for="carPrice">
+                        <h6>ราคารถยนต์ (บาท)</h6>
+                    </label>
+                    <input id="carPrice" type="text" required class="validate" />
+                </div>
+                <!-- End Car Price Input -->
+
+                <!-- Start Down Payment Input -->
+                <div class="input-field">
+                    <label for="downPayment">
+                        <h6>เงินดาวน์ (บาท)</h6>
+                    </label>
+                    <input id="downPayment" type="text" required class="validate" />
+                </div>
+                <!-- End Down Payment Input -->
+
+                <!-- Start Submit Button -->
+                <button id="btn" class="btn waves-effect waves-light" type="submit">
+                    คำนวณ
+                </button>
+                <!-- End Submit Button -->
+            </form>
+        </div>
+        <!-- End Form Content -->
+
+        <!-- Start Table Content -->
+        <div id="result"></div>
+        <!-- End Table Content -->
+
+        <!-- Start Footer -->
+        <div id="footer" class="center-align">
+            <p>
+                © 2020 P Auto
+                <br />
+                โทร. 095-826-3339
+            </p>
+        </div>
+        <!-- End Footer -->
+    </div>
+    <!-- End Container -->
+
+</body>
+
+</html>
