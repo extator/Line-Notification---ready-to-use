@@ -47,8 +47,10 @@ exports.lineWebhook = functions.https.onRequest(async (req, res) => {
                         const getId = await checkClient(macAddress)
                         const me = await checkStatus(getId.client._id)
                         return replymessage(req.body, res, statusMessage(me), 'flex')
-                    case 'Settings':
-                        return replymessage(req.body, res, 'Not available, Please try again later.')
+                    // case 'วิธีการใช้งาน':
+                    //     return replymessage(req.body, res, 'Not available, Please try again later.')
+                    // case 'คู่มือการใช้':
+                    //     return replymessage(req.body, res, 'Not available, Please try again later.')
                 }
             }
         }
