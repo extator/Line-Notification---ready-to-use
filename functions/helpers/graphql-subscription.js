@@ -1,7 +1,7 @@
 const { exampleObjectMetadata } = require('firebase-functions-test/lib/providers/storage')
 const { GraphQLClient } = require('kikstart-graphql-client')
 const { reply } = require('./line/push')
-
+const moment = require('moment')
 const { notificationMessage } = require('./line/notification')
 const admin = require('firebase-admin')
 const { check } = require('./firebase')
@@ -61,14 +61,14 @@ const lostSignal = async () => {
 
     client.runSubscription(query.subscription).subscribe(async (res) => {
         const lostEvent = res.data.clientUpdated
+        const checkTime = lostEvent.chktime
+        const thisTime = moment().add(7, 'hour').format()
+        const diffTime = moment(thisTime).diff(checkTime, 'minutes')
         if (lostEvent.macaddress !== undefined && lostEvent.is_online !== true) {
-            const lostCheck = await check(lostEvent.macaddress)
-            // for (let i = 0; i < 3600; i++) {
-            //     if (i % 3600 === 0) {
-            //         replymessage(lostCheck, res, 'ขาดการเชื่อมต่ออินเทอร์เน็ต')
-            //     }
-            // }
-            // replymessage(lostCheck, res, 'ขาดการเชื่อมต่ออินเทอร์เน็ต')
+            if (diffTime <= 5) {
+                const lostCheck = await check(lostEvent.macaddress)
+                replymessage(lostCheck, res, 'ขาดการเชื่อมต่ออินเทอร์เน็ต')
+            }
         }
     })
 }
