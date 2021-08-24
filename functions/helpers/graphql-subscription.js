@@ -1,4 +1,3 @@
-const { exampleObjectMetadata } = require('firebase-functions-test/lib/providers/storage')
 const { GraphQLClient } = require('kikstart-graphql-client')
 const { reply } = require('./line/push')
 const moment = require('moment')

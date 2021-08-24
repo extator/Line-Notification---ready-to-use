@@ -1,6 +1,5 @@
 /* eslint-disable no-case-declarations */
 const functions = require('firebase-functions')
-
 const { googleSheetCredential } = require('./config')
 const { reply } = require('./helpers/line')
 const { statusMessage } = require('./helpers/line/messages')
@@ -9,6 +8,7 @@ const { validateRegistered, registerUser } = require('./helpers/firebase')
 const { checkClient, checkStatus } = require('./helpers/graphql')
 const { subscription, lostSignal } = require('./helpers/graphql-subscription')
 
+// eslint-disable-next-line consistent-return
 exports.lineWebhook = functions.https.onRequest(async (req, res) => {
     try {
 
@@ -36,13 +36,12 @@ exports.lineWebhook = functions.https.onRequest(async (req, res) => {
             } else {
                 switch (messagesFromUser) {
                     case 'register':
-                        return replymessage(req.body, res, 'กรุณากรอกรหัสยืนยันเพื่อลงทะเบียน เช่น Register:1234567890123')
+                        return replymessage(req.body, res, 'กรุณากรอกรหัสยืนยันเพื่อลงทะเบียนดังนี้ Register:(รหัสอุปกรณืของท่าน)')
                     case 'home status':
                         const hasBeenRegistered = await validateRegistered(lineUserID)
                         if (!hasBeenRegistered) {
-                            return replymessage(req.body, res, 'กรุณาลงทะเบียนก่อนใช้งาน')
+                            return replymessage(req.body, res, 'กรุณากรอกรหัสยืนยันเพื่อลงทะเบียนดังนี้ Register:(รหัสอุปกรณืของท่าน)')
                         }
-
                         const { macAddress } = hasBeenRegistered
                         const getId = await checkClient(macAddress)
                         const me = await checkStatus(getId.client._id)
