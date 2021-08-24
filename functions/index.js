@@ -16,7 +16,7 @@ exports.lineWebhook = functions.https.onRequest(async (req, res) => {
         const isTextmessage = type === 'message' && message.type === 'text'
         if (isTextmessage) {
             const messagesFromUser = message.text.trim().toLowerCase()
-            const checkRegister = messagesFromUser.split('register:')
+            const checkRegister = messagesFromUser.split('register:', ' ')
             const needToRegister = checkRegister && checkRegister[1]
             console.log(messagesFromUser);
             if (needToRegister) {
