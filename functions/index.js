@@ -1,6 +1,5 @@
 /* eslint-disable no-case-declarations */
 const functions = require('firebase-functions')
-const { googleSheetCredential } = require('./config')
 const { reply } = require('./helpers/line')
 const { statusMessage } = require('./helpers/line/messages')
 const { welcomeMessage } = require('./helpers/line/welcome')

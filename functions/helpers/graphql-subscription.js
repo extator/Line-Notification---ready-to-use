@@ -1,5 +1,5 @@
 const { GraphQLClient } = require('kikstart-graphql-client')
-const { reply } = require('./line/push')
+const { reply } = require('./line')
 const moment = require('moment')
 const { notificationMessage } = require('./line/notification')
 const admin = require('firebase-admin')
@@ -11,10 +11,9 @@ const { check } = require('./firebase')
 //     databaseURL: firebaseCredential.DATABASE_URL
 // })
 const client = new GraphQLClient({
-    uri: 'https://api.aheadallsolution.com/graphql',
-    wsUri: 'wss://api.aheadallsolution.com/graphql'
+    url: 'https://api.aheadallsolution.com/graphql',
+    wsUrl: 'wss://api.aheadallsolution.com/graphql'
 })
-
 const subscription = async () => {
     const query = {
         subscription: `
@@ -74,8 +73,6 @@ const lostSignal = async () => {
 
 const replymessage = (bodyRequest, res, messages, type) => {
     reply(bodyRequest, messages, type)
-
-    // return res.status(200).send('ok')
 }
 module.exports = {
     subscription,
