@@ -35,11 +35,11 @@ exports.lineWebhook = functions.https.onRequest(async (req, res) => {
             } else {
                 switch (messagesFromUser) {
                     case 'register':
-                        return replymessage(req.body, res, 'กรุณากรอกรหัสยืนยันเพื่อลงทะเบียนดังนี้ Register:(รหัสอุปกรณืของท่าน)')
+                        return replymessage(req.body, res, 'กรุณากรอกรหัสยืนยันเพื่อลงทะเบียนดังนี้ Register:(รหัสอุปกรณ์ของท่าน)')
                     case 'home status':
                         const hasBeenRegistered = await validateRegistered(lineUserID)
                         if (!hasBeenRegistered) {
-                            return replymessage(req.body, res, 'กรุณากรอกรหัสยืนยันเพื่อลงทะเบียนดังนี้ Register:(รหัสอุปกรณืของท่าน)')
+                            return replymessage(req.body, res, 'กรุณากรอกรหัสยืนยันเพื่อลงทะเบียนดังนี้ Register:(รหัสอุปกรณ์ของท่าน)')
                         }
                         const { macAddress } = hasBeenRegistered
                         const getId = await checkClient(macAddress)

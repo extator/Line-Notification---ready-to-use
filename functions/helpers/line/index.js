@@ -7,7 +7,6 @@ const LINE_HEADER = {
 
 }
 const reply = async (bodyResponse, message, type, altText = 'แจ้งเตือน') => {
-
     const reply = bodyResponse.events[0].replyToken
     let messages = [{ type: `text`, text: message }]
     if (type === 'flex') {

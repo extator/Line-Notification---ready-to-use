@@ -1,5 +1,5 @@
 const { GraphQLClient } = require('kikstart-graphql-client')
-const { reply } = require('./line')
+const { reply } = require('./line/push')
 const moment = require('moment')
 const { notificationMessage } = require('./line/notification')
 const admin = require('firebase-admin')
@@ -41,6 +41,7 @@ const subscription = async () => {
             replymessage(eventCheck, res, notificationMessage(notiEvent), 'flex')
         }
     })
+    return
 }
 
 const lostSignal = async () => {
@@ -69,6 +70,7 @@ const lostSignal = async () => {
             }
         }
     })
+    return
 }
 
 const replymessage = (bodyRequest, res, messages, type) => {
