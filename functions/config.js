@@ -7,7 +7,7 @@ const googleSheetCredential = {
     RANGE: 'A2:H'
 }
 const firebaseCredential = {
-    DATABASE_URL: 'https://universal-alarm-notification-default-rtdb.firebaseio.com'
+    DATABASE_URL: 'https://universal-alarm-system-default-rtdb.asia-southeast1.firebasedatabase.app'
 }
 module.exports = {
     lineCredential,

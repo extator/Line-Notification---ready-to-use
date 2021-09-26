@@ -9,12 +9,6 @@ const notificationMessage = (notiEvent) => {
         [3]: 'เกิดเหตุฉุกเฉิน',
     }
     let statusText = messageAlarm[notiEvent.alarm_type]
-
-    // if (notiEvent.start_time && !notiEvent.end_time) {
-    //     if (notiEvent.userchecker === null) {
-
-    //     }}
-
     if (notiEvent.start_time && !notiEvent.end_time) {
         if (notiEvent.userchecker === null) {
             return {
@@ -256,6 +250,137 @@ const notificationMessage = (notiEvent) => {
                     ],
                     "flex": 0
                 }
+            }
+        }
+    } else if (notiEvent.start_time && notiEvent.end_time && !notiEvent.userchecker) {
+        return {
+            "type": "bubble",
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": `การแจ้งเหตุ`,
+                        "color": "#f77f00",
+                        "weight": "bold",
+                        "size": "md"
+                    },
+                    {
+                        "type": "text",
+                        "text": `บ้านเลขที่ ${address}`,
+                        "weight": "bold",
+                        "size": "xl"
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "margin": "lg",
+                        "spacing": "sm",
+                        "contents": [
+                            {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "ประเภท",
+                                        "color": "#aaaaaa",
+                                        "size": "md",
+                                        "flex": 3
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": `${statusText}`,
+                                        "wrap": true,
+                                        "color": "#666666",
+                                        "size": "md",
+                                        "flex": 5
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "เวลาเกิดเหตุ",
+                                        "color": "#aaaaaa",
+                                        "size": "sm",
+                                        "flex": 3
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": `${alarmTime}`,
+                                        "wrap": true,
+                                        "color": "#666666",
+                                        "size": "sm",
+                                        "flex": 5
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "เวลาเกิดหยุด",
+                                        "color": "#aaaaaa",
+                                        "size": "sm",
+                                        "flex": 3
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": `${endTime}`,
+                                        "wrap": true,
+                                        "color": "#666666",
+                                        "size": "sm",
+                                        "flex": 5
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "การดำเนินการ",
+                                        "color": "#aaaaaa",
+                                        "size": "sm",
+                                        "flex": 3
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": `หยุดการแจ้งเตือน`,
+                                        "wrap": true,
+                                        "color": "#f77f00",
+                                        "size": "sm",
+                                        "flex": 5
+                                    }
+                                ]
+                            },
+                        ]
+                    }
+                ]
+            },
+            "footer": {
+                "type": "box",
+                "layout": "vertical",
+                "spacing": "sm",
+                "contents": [
+                    {
+                        "type": "spacer",
+                        "size": "sm"
+                    }
+                ],
+                "flex": 0
             }
         }
     }
