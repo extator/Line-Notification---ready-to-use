@@ -253,6 +253,137 @@ const statusMessage = (me) => {
                 }
             }
         }
+    } else if (me.event.start_time && me.event.end_time && !me.event.userchecker.name){
+        return {
+            "type": "bubble",
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": `ข้อมูลบ้านของฉัน`,
+                        "color": "#f77f00",
+                        "weight": "bold",
+                        "size": "md"
+                    },
+                    {
+                        "type": "text",
+                        "text": `บ้านเลขที่ ${address}`,
+                        "weight": "bold",
+                        "size": "xl"
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "margin": "lg",
+                        "spacing": "sm",
+                        "contents": [
+                            {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "สถานะ",
+                                        "color": "#aaaaaa",
+                                        "size": "md",
+                                        "flex": 3
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": `${statusText}`,
+                                        "wrap": true,
+                                        "color": "#666666",
+                                        "size": "md",
+                                        "flex": 5
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "เวลาเกิดเหตุ",
+                                        "color": "#aaaaaa",
+                                        "size": "sm",
+                                        "flex": 3
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": `${me.event.start_time}`,
+                                        "wrap": true,
+                                        "color": "#666666",
+                                        "size": "sm",
+                                        "flex": 5
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "เวลาหยุด",
+                                        "color": "#aaaaaa",
+                                        "size": "sm",
+                                        "flex": 3
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": `${me.event.end_time}`,
+                                        "wrap": true,
+                                        "color": "#666666",
+                                        "size": "sm",
+                                        "flex": 5
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "การดำเนินการ",
+                                        "color": "#aaaaaa",
+                                        "size": "sm",
+                                        "flex": 3
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": `กำลังดำเนินการตรวจสอบ`,
+                                        "wrap": true,
+                                        "color": "#f77f00",
+                                        "size": "sm",
+                                        "flex": 5
+                                    }
+                                ]
+                            },
+                        ]
+                    }
+                ]
+            },
+            "footer": {
+                "type": "box",
+                "layout": "vertical",
+                "spacing": "sm",
+                "contents": [
+                    {
+                        "type": "spacer",
+                        "size": "sm"
+                    }
+                ],
+                "flex": 0
+            }
+        }
     }
     return {
         "type": "bubble",
