@@ -253,7 +253,8 @@ const statusMessage = (me) => {
                 }
             }
         }
-    } else if (me.event.start_time && me.event.end_time && !me.event.userchecker.name){
+    } else if (me.event.start_time && me.event.end_time && !me.event.userchecker){
+        statusText = messageAlarm[me.event.alarm_type]
         return {
             "type": "bubble",
             "body": {
