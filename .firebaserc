@@ -1,5 +1,5 @@
 {
   "projects": {
-    "default": "universal-alarm-system"
+    "default": "*your-firebase-name*" 
   }
 }
