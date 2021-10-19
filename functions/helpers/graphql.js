@@ -1,6 +1,6 @@
 const { gql, GraphQLClient } = require('graphql-request')
 
-const endpoint = 'https://api.aheadallsolution.com/graphql'
+const endpoint = '*your api*'
 const client = new GraphQLClient(endpoint, { headers: {} })
 
 const checkClient = async (mac) => {

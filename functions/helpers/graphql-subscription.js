@@ -11,8 +11,8 @@ const { check } = require('./firebase')
 //     databaseURL: firebaseCredential.DATABASE_URL
 // })
 const client = new GraphQLClient({
-    url: 'https://api.aheadallsolution.com/graphql',
-    wsUrl: 'wss://api.aheadallsolution.com/graphql'
+    url: '*your url*',
+    wsUrl: '*your wsUrl*'
 })
 const subscription = async () => {
     const query = {
